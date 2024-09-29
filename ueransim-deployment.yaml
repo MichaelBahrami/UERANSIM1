@@ -15,9 +15,28 @@ spec:
     spec:
       containers:
         - name: gnb
-          image: aligungr/ueransim:latest  # Update with the correct image version
+          image: louisroyer/ueransim-gnb  # Update with the correct image version
           ports:
             - containerPort: 8080  # Update based on the service
-          env:
-            - name: AMF_ADDR
-              value: 172.16.245.245
+          environment:
+  ROUTING_SCRIPT: "docker-setup"
+  TEMPLATE_SCRIPT: "template-script.sh"
+  TEMPLATE_SCRIPT_ARGS: ""
+  CONFIG_FILE: "/etc/ueransim/gnb.yaml"
+  CONFIG_TEMPLATE: "/usr/local/share/ueransim/template-gnb.yaml"
+  ONESHOT: "true"
+  environment:
+  MCC: "001"
+  MNC: "01"
+  NCI: "0x000000010"
+  ID_LEN: 32
+  TAC: 1
+  # The following variable have no default values
+  RLS_IP: "10.0.0.2"
+  N2_IP: "10.0.1.2"
+  N3_IP: "10.0.2.2"
+  AMF_CONFIGS: |-
+    - address: 10.0.2.3
+      port: 38412
+  SUPPORTED_NSSAIS: |-
+    - sst: 1
