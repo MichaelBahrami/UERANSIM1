@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ueransim
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ueransim
+  template:
+    metadata:
+      labels:
+        app: ueransim
+    spec:
+      containers:
+        - name: gnb
+          image: aligungr/ueransim:latest  # Update with the correct image version
+          ports:
+            - containerPort: 8080  # Update based on the service
+          env:
+            - name: AMF_ADDR
+              value: 172.16.245.245
