@@ -31,12 +31,8 @@ spec:
   NCI: "0x000000010"
   ID_LEN: 32
   TAC: 1
-  # The following variable have no default values
-  RLS_IP: "10.0.0.2"
-  N2_IP: "10.0.1.2"
-  N3_IP: "10.0.2.2"
   AMF_CONFIGS: |-
-    - address: 10.0.2.3
+    - address: 172.16.245.245
       port: 38412
   SUPPORTED_NSSAIS: |-
     - sst: 1
